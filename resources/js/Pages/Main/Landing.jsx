@@ -12,10 +12,12 @@ export default function Landing({ auth, laravelVersion, phpVersion }) {
     "music", "sports", "mechanic", "K-pop", "football", "Video games"
   ])
 
+  // console.log('auth', auth)
+
   return (
     <div className=''>
       <Head title="Home" />
-      <Navbar />
+      <Navbar auth={auth} />
       <div className="max-w-7xl mx-auto p-6 lg:p-8">
         <div className='list-blog mb-6 flex gap-8'>
           <div className="blogs flex flex-col w-8/12 gap-6">

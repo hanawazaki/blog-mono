@@ -9,7 +9,7 @@ import Share from '@/Components/Share'
 import { Head } from '@inertiajs/react'
 import React, { useState } from 'react'
 
-export default function Detail({ post }) {
+export default function Detail({ post, auth }) {
   const [tags, settags] = useState([
     "music", "sports", "mechanic", "K-pop", "football", "Video games"
   ])
@@ -21,7 +21,7 @@ export default function Detail({ post }) {
   return (
     <>
       <Head title="Detail" />
-      <Navbar />
+      <Navbar auth={auth} />
       <div className="max-w-7xl mx-auto p-6 lg:p-8">
         <div className='mb-6 flex gap-8'>
           <div className="blogs flex flex-col w-8/12 gap-6 card border p-4 bg-base-100">

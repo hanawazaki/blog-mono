@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $post = Post::latest()->get();
-
-        return inertia('Main/Detail', [
-            "post" => $post
-        ]);
+        //
     }
 
     /**
@@ -24,7 +19,7 @@ class MainController extends Controller
      */
     public function create()
     {
-        return inertia('Main/Create');
+        //
     }
 
     /**
