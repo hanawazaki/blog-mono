@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MainController extends Controller
 {
@@ -30,9 +31,19 @@ class MainController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function storePost(Request $request)
     {
-        //
+        // dd($request->all());
+        // exit();
+        $data = $request->all();
+        $data['thumbnail'] = Storage::disk('public')->put('posts', $request->file('thumbnail'));
+
+        Post::create($data);
+
+        return redirect('/')->with([
+            'message' => 'data inserted sucesully',
+            'type' => 'success'
+        ]);
     }
 
     /**

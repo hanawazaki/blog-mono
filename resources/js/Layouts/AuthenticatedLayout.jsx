@@ -20,9 +20,45 @@ export default function Authenticated({ user, header, children }) {
                                 </Link>
                             </div>
 
+                            {
+                                user.id !== 1 ? (
+                                    <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                        <NavLink href={route('user.dashboard.index')} active={route().current('user.dashboard.index')}>
+                                            Dashboard
+                                        </NavLink>
+                                    </div>
+                                ) : (
+                                    <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                        <NavLink href={route('admin.dashboard.index')} active={route().current('admin.dashboard.index')}>
+                                            Dashboard
+                                        </NavLink>
+                                    </div>
+                                )
+                            }
+                            {
+                                user.id === 1 &&
+                                <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <NavLink href={route('admin.dashboard.getUsers')} active={route().current('admin.dashboard.getUsers')}>
+                                        List User
+                                    </NavLink>
+                                </div>
+                            }
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink href={route('user.dashboard.index')} active={route().current('user.dashboard.index')}>
-                                    Dashboard
+                                <NavLink href={route('myPosts')} active={route().current('myPosts')}>
+                                    My Posts
+                                </NavLink>
+                            </div>
+                            {
+                                user.id === 1 &&
+                                <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                    <NavLink href={route('admin.dashboard.getPosts')} active={route().current('admin.dashboard.getPosts')}>
+                                        All Posts
+                                    </NavLink>
+                                </div>
+                            }
+                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <NavLink href={route('bookmarks')} active={route().current('bookmarks')}>
+                                    List Bookmarks
                                 </NavLink>
                             </div>
                         </div>

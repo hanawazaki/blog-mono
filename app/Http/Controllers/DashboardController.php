@@ -14,6 +14,26 @@ class DashboardController extends Controller
         return inertia('User/Index');
     }
 
+    public function bookmarks()
+    {
+        return inertia('Dashboard/Bookmarks');
+    }
+
+    public function myPosts()
+    {
+        return inertia('Dashboard/Posts/Index');
+    }
+
+    public function getPosts()
+    {
+        return inertia('Dashboard/Posts/Index');
+    }
+
+    public function getUsers()
+    {
+        return inertia('Dashboard/Users/Index');
+    }
+
     public function admin()
     {
         return inertia('Admin/Index');

@@ -2,13 +2,7 @@ import { Link } from '@inertiajs/react'
 import React from 'react'
 
 export default function Navbar({ auth }) {
-  console.log('auth', auth)
 
-  if (auth.user !== null) {
-    console.log('user logged in')
-  } else {
-    console.log('user logged out')
-  }
   return (
     <div className="navbar bg-base-100 flex justify-between">
       <Link href="/" className="btn btn-ghost normal-case text-xl">My Blog</Link>
@@ -34,7 +28,15 @@ export default function Navbar({ auth }) {
                     Profile
                   </a>
                 </li>
-                <li><Link href={route('user.dashboard.index')}>Dashboard</Link></li>
+                <li>
+                  {
+                    auth.user !== null && auth.user.id !== 1 ? (
+                      <Link href={route('user.dashboard.index')}>Dashboard</Link>
+                    ) : (
+                      <Link href={route('admin.dashboard.index')}>Dashboard</Link>
+                    )
+                  }
+                </li>
                 <li><Link method="post" as="button" href={route('logout')}>Logout</Link></li>
               </ul>
             </div>
